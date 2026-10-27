@@ -1,0 +1,679 @@
+/* Shared responsive layer. Page components inject this after their legacy styles. */
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html { scroll-padding-top: 88px; }
+body { min-width: 320px; }
+#root, main, section, article, header, footer, nav, form, fieldset { min-width: 0; }
+img, video, iframe, canvas, svg { max-width: 100%; }
+.hero-video, .page-hero-video { width: 100%; max-width: 100%; }
+button, input, select, textarea { max-width: 100%; }
+article, .card, [class*="-card"], .stat-box, .feature-item, .value-card, .perk-item, .service-item, .job-card {
+  min-width: 0;
+  max-width: 100%;
+}
+textarea, p, a, h1, h2, h3, label, td, th { overflow-wrap: anywhere; }
+
+/* The React navbar remains horizontal only while all controls fit. */
+#navbar.zayer-navbar .nav-mobile-controls { display: none; }
+@media (min-width: 1101px) {
+  #navbar.zayer-navbar {
+    height: 80px !important;
+    max-width: 100% !important;
+    padding: 0 clamp(16px, 2vw, 36px) !important;
+    justify-content: space-between !important;
+    gap: 0 !important;
+  }
+  #navbar.zayer-navbar .logo {
+    flex-shrink: 0 !important;
+    margin-right: clamp(14px, 1.8vw, 28px) !important;
+  }
+  #navbar.zayer-navbar .hamburger { display: none !important; }
+  #navbar.zayer-navbar .nav-mobile-controls { display: none !important; }
+  #navbar.zayer-navbar .nav-links {
+    position: static !important;
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: clamp(8px, 0.9vw, 16px) !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  #navbar.zayer-navbar .nav-links > li { width: auto !important; }
+  #navbar.zayer-navbar .nav-links .nav-language-item {
+    margin: 0 0 0 auto !important;
+  }
+  #navbar.zayer-navbar .nav-links .nav-cta-item,
+  #navbar.zayer-navbar .nav-links .nav-login-item {
+    margin: 0 !important;
+  }
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):not(.nav-login) {
+    display: inline-flex !important;
+    width: auto !important;
+    padding: 15px 0 !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: clamp(11px, 0.76vw, 13px) !important;
+    font-weight: 600 !important;
+    letter-spacing: .04em !important;
+    white-space: nowrap !important;
+    text-transform: uppercase !important;
+  }
+  #navbar.zayer-navbar .nav-links a.nav-cta,
+  #navbar.zayer-navbar .nav-links a.nav-login {
+    width: auto !important;
+    padding: 8px 14px !important;
+    font-size: 11.5px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  #navbar.zayer-navbar {
+    height: 80px !important;
+    min-height: 80px !important;
+    padding-inline: clamp(16px, 4vw, 30px) !important;
+    gap: 14px !important;
+  }
+  #navbar.zayer-navbar .nav-mobile-controls {
+    display: flex !important;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 14px;
+    margin-left: auto;
+  }
+  #navbar.zayer-navbar .nav-mobile-controls .nav-language-switch { display: inline-flex !important; }
+  #navbar.zayer-navbar .nav-mobile-controls .nav-language-switch button { min-width: 30px; min-height: 44px; padding: 8px 3px; }
+  #navbar.zayer-navbar .hamburger {
+    display: inline-flex !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  #navbar.zayer-navbar .nav-links {
+    position: absolute !important;
+    top: 80px !important;
+    right: 0 !important;
+    left: 0 !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-height: calc(100dvh - 80px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    margin: 0 !important;
+    padding: 14px clamp(18px, 5vw, 36px) 24px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e8edf4 !important;
+    background: rgba(255,255,255,.99) !important;
+    box-shadow: 0 14px 26px rgba(10,22,40,.12) !important;
+  }
+  #navbar.zayer-navbar .nav-links.open { display: flex !important; }
+  #navbar.zayer-navbar .nav-links > li { display: flex !important; width: 100% !important; }
+  #navbar.zayer-navbar .nav-links .nav-language-item { display: none !important; }
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):not(.nav-login) {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 48px;
+    align-items: center;
+    padding: 13px 0 !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: .88rem !important;
+    font-weight: 500 !important;
+    letter-spacing: .5px !important;
+    text-transform: uppercase !important;
+  }
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):not(.nav-login)::before {
+    display: block !important;
+    top: 3px !important;
+    right: 0 !important;
+    left: auto !important;
+    transform: scale(.4) !important;
+  }
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):not(.nav-login).active::before,
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):not(.nav-login):hover::before {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):not(.nav-login)::after {
+    right: auto !important;
+    bottom: 5px !important;
+    left: 0 !important;
+    width: 54px;
+    transform-origin: left !important;
+  }
+  #navbar.zayer-navbar .nav-links .nav-cta-item,
+  #navbar.zayer-navbar .nav-links .nav-login-item { margin-top: 10px !important; }
+  #navbar.zayer-navbar .nav-links a.nav-cta,
+  #navbar.zayer-navbar .nav-links a.nav-login {
+    display: inline-flex !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  #app { grid-template-columns: minmax(0, 1fr) !important; }
+  #app aside {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    overscroll-behavior-x: contain;
+  }
+  #app aside .brand { flex: 0 0 auto; }
+  #tabs { flex: 1 1 auto; min-width: 0; flex-direction: row; width: auto; max-width: none; overflow-x: auto; overflow-y: hidden; }
+  #tabs button { width: auto; min-height: 44px; flex: 0 0 auto; white-space: nowrap; }
+  #app aside .foot { display: flex; flex: 0 0 auto; gap: 6px; margin: 0; padding: 0 0 0 8px; border-top: 0; background: transparent; }
+  #app aside .foot button { width: auto; }
+  #app main { min-width: 0; }
+  #app .wrap { max-width: 100%; overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  #app .wrap table { min-width: 640px; }
+}
+
+/* Fluid display type and safe media widths on every route. */
+.hero h1, .page-hero h1, .portfolio-document .page-hero h1 {
+  max-width: 100%;
+  font-size: clamp(2rem, 5.8vw, 5.4rem) !important;
+  line-height: 1.04;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.section-title, .section-heading h2, .career-modal-title {
+  max-width: 100%;
+  font-size: clamp(1.55rem, 4vw, 3.35rem) !important;
+  line-height: 1.12;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.hero-sub, .hero-copy, .page-hero-sub, .section-desc, .section-intro, .section-subtitle {
+  max-width: 100%;
+  font-size: clamp(.94rem, 1.35vw, 1.12rem);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.quote-page .quote-head h1 { font-size: clamp(2rem, 4vw, 3.3rem) !important; }
+.container, .section-inner, .hero-content, .page-hero-content, .portfolio-document > * { min-width: 0; }
+
+/* Tablet layouts. */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .why-us, .culture-grid, .contact-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .services-grid, .values-grid, .team-grid, .perks-grid, .model-grid, .course-grid,
+  .web-grid, .media-grid, .process-steps, .feature-grid, .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mission, .about-story, .story-layout, .contact-main { align-items: start; }
+  .mission, .about-story, .story-layout, .approach-layout, .hero-layout, .hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .footer-top, .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+@media (max-width: 900px) {
+  .hero-stats { position: static !important; display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; width: 100%; margin: 36px 0 0 !important; }
+  .hero-stats > *, .stat-box { min-width: 0; }
+}
+
+@media (max-width: 860px) {
+  .contact-main { grid-template-columns: minmax(0, 1fr) !important; }
+  .form-row { grid-template-columns: minmax(0, 1fr) !important; }
+  .quote-page .field-grid, .quote-page .request-form { grid-template-columns: minmax(0, 1fr) !important; }
+  .quote-page .request-form .wide { grid-column: auto !important; }
+}
+
+/* Compact screens and phones. */
+@media (max-width: 767px) {
+  html { scroll-padding-top: 84px; }
+  .why-us, .mission, .about-story, .story-layout, .culture-grid, .approach-layout, .contact-main,
+  .hero-layout, .hero-grid, .services-grid, .values-grid, .team-grid, .perks-grid, .model-grid,
+  .course-grid, .web-grid, .media-grid, .process-steps, .feature-grid, .features-grid,
+  .request-form, .field-grid, .contact-layout, .contact-content, .quote-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .why-us, .process, .services, .mission, .values, .team, .timeline, .section, .models,
+  .contact-info, .contact-form-wrap, .culture, .jobs-section, .courses, .cta-section {
+    padding: 56px 20px !important;
+  }
+  .page-hero { padding-right: 20px !important; padding-left: 20px !important; }
+  .hero-actions, .hero-proof, .contact-buttons, .quote-actions { flex-wrap: wrap; }
+  .hero-actions { align-items: stretch; flex-direction: column; }
+  .hero-actions > * { width: 100%; max-width: 420px; }
+  .hero-actions > .btn, .hero-actions > a, .cta-banner > a, .cta-panel > a { max-width: 100%; }
+  .cta-banner, .cta-panel, .about-cta { align-items: stretch !important; flex-direction: column !important; gap: 22px !important; text-align: left; }
+  .cta-banner { padding: 48px 20px !important; }
+  .footer-top, .footer-main { grid-template-columns: minmax(0, 1fr) !important; gap: 28px !important; }
+  .footer-bottom { align-items: flex-start !important; flex-direction: column !important; gap: 12px !important; }
+  .jobs-list { gap: 12px; }
+  .job-card { display: flex !important; flex-direction: column !important; align-items: stretch !important; gap: 14px !important; }
+  .job-card > div { min-width: 0; }
+  .job-apply { display: flex !important; width: 100% !important; min-height: 46px; align-items: center; justify-content: center; }
+  .filter-pills { justify-content: flex-start !important; flex-wrap: nowrap !important; overflow-x: auto; max-width: 100%; padding: 0 0 8px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .filter-pills .pill { flex: 0 0 auto; }
+  .web-project-card, .media-card, .service-card, .model-card, .course-card { min-width: 0; max-width: 100%; }
+  .contact-btn { gap: 10px; }
+  .contact-btn > span { min-width: 0; overflow-wrap: anywhere; }
+  .career-modal-overlay { align-items: flex-start !important; padding: 12px !important; }
+  .career-application-modal, #jobModal.modal {
+    width: calc(100vw - 24px) !important;
+    max-width: 820px !important;
+    max-height: 90dvh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 24px 18px !important;
+  }
+  .career-modal-meta { align-items: flex-start; flex-direction: column; }
+  .career-form-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .career-modal-form { min-width: 0; }
+  .career-modal-form input, .career-modal-form textarea { min-width: 0; }
+  .lightbox-overlay { padding: 12px !important; }
+  .lightbox-inner { width: 100%; }
+  .lightbox-media { max-height: 72dvh; }
+  .quote-page .field-grid, .quote-page .request-form { grid-template-columns: minmax(0, 1fr) !important; }
+  .quote-page .request-form .wide { grid-column: auto !important; }
+  .quote-page .line-controls input { flex: 1 1 90px; width: auto; }
+  .quote-page .line-total { margin-left: 0; }
+  .quote-page .card { padding: 18px 16px; }
+  .quote-page .quote-actions > button { flex: 1 1 100%; }
+  .admin-wait, #app main { min-width: 0; }
+  #app { grid-template-columns: minmax(0, 1fr) !important; }
+  #app aside { position: sticky; top: 0; z-index: 20; width: 100%; max-width: 100%; overflow: hidden; overscroll-behavior-x: contain; }
+  #tabs { flex: 1 1 auto; min-width: 0; width: auto; max-width: none; overflow-x: auto; }
+  #tabs button { min-height: 44px; flex: 0 0 auto; }
+  #app main { padding: 18px 14px 40px !important; }
+  #app .top { align-items: flex-start; flex-direction: column; }
+  #app .top .cta { display: flex; width: 100%; flex-wrap: wrap; }
+  #app .bar { align-items: stretch; }
+  #app .sr { flex-basis: 100%; max-width: none; }
+  #app .wrap { width: 100%; max-width: 100%; overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  #app .wrap table { min-width: 640px; }
+  #app th, #app td { max-width: 200px; }
+  .pn header, .pn .bd, .pn footer { padding-right: 16px !important; padding-left: 16px !important; }
+}
+
+@media (max-width: 640px) {
+  footer, .site-footer { padding-right: 20px !important; padding-left: 20px !important; }
+  .footer-top, .footer-main { grid-template-columns: minmax(0, 1fr) !important; }
+  .footer-bottom { flex-direction: column !important; align-items: flex-start !important; }
+}
+
+@media (max-width: 600px) {
+  #zaya-launcher { right: 12px !important; bottom: 12px !important; transform: scale(.9); transform-origin: bottom right; }
+  #zaya-window {
+    right: 10px !important;
+    left: 10px !important;
+    bottom: 104px !important;
+    width: auto !important;
+    height: min(540px, calc(100dvh - 124px)) !important;
+    min-height: min(300px, calc(100dvh - 124px)) !important;
+    max-height: calc(100dvh - 124px) !important;
+  }
+  .tech-stage { width: min(100%, 420px) !important; aspect-ratio: 1 / 1; margin-inline: auto; }
+  .course-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .cta-panel { align-items: flex-start !important; flex-direction: column !important; }
+  input, select, textarea, button { font-size: 16px !important; }
+  #zaya-input { font-size: 16px !important; }
+}
+
+@media (max-width: 380px) {
+  #navbar.zayer-navbar { padding-inline: 14px !important; }
+  #navbar.zayer-navbar .logo { font-size: 1.25rem !important; }
+  #navbar.zayer-navbar .nav-mobile-controls { gap: 9px; }
+  #navbar.zayer-navbar .nav-language-switch { gap: 4px; }
+  .hero-stats { gap: 9px !important; margin-top: 26px !important; }
+  .hero-stats .stat-box, .hero-stats .stat-num { min-width: 0; }
+  .hero-stats .stat-num { font-size: clamp(1.15rem, 7vw, 1.8rem) !important; }
+  .hero-stats .stat-label { font-size: .65rem !important; line-height: 1.3; }
+  .career-application-modal, #jobModal.modal { padding: 22px 16px !important; }
+}
+
+/* Final shared layout layer: balanced desktop navigation and centered page content. */
+#navbar.zayer-navbar {
+  max-width: 100% !important;
+  justify-content: space-between !important;
+  padding-inline: clamp(16px, 2vw, 36px) !important;
+}
+#navbar.zayer-navbar .logo {
+  flex-shrink: 0 !important;
+  margin-right: clamp(14px, 1.8vw, 28px) !important;
+}
+#navbar.zayer-navbar .nav-mobile-controls { display: none !important; }
+#navbar.zayer-navbar .nav-content {
+  position: static !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#navbar.zayer-navbar .nav-links {
+  position: static !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(10px, 1.1vw, 20px) !important;
+  width: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#navbar.zayer-navbar .nav-links > li { width: auto !important; }
+#navbar.zayer-navbar .nav-actions {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-left: auto !important;
+}
+#navbar.zayer-navbar .nav-actions .nav-language-item { display: block !important; }
+#navbar.zayer-navbar .nav-actions a.nav-cta,
+#navbar.zayer-navbar .nav-actions a.nav-login {
+  width: auto !important;
+  padding: 8px 14px !important;
+  font-size: 11.5px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+@media (min-width: 1101px) {
+  #navbar.zayer-navbar {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr) !important;
+  }
+  #navbar.zayer-navbar .logo { grid-column: 1; justify-self: start; }
+  #navbar.zayer-navbar .nav-content { display: contents !important; }
+  #navbar.zayer-navbar .nav-links {
+    grid-column: 2;
+    flex: 0 0 auto !important;
+    justify-self: center;
+    width: max-content !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+  #navbar.zayer-navbar .nav-actions {
+    grid-column: 3;
+    justify-self: end;
+    margin-left: auto !important;
+  }
+  #navbar.zayer-navbar .hamburger { display: none !important; }
+}
+
+@media (min-width: 1101px) and (max-width: 1300px) {
+  #navbar.zayer-navbar .logo { margin-right: 14px !important; }
+  #navbar.zayer-navbar .nav-actions { gap: 6px !important; }
+  #navbar.zayer-navbar .nav-actions a.nav-cta,
+  #navbar.zayer-navbar .nav-actions a.nav-login {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+    letter-spacing: .04em !important;
+  }
+}
+
+@media (min-width: 1101px) and (max-width: 1160px) {
+  #navbar.zayer-navbar .nav-actions { gap: 2px !important; }
+  #navbar.zayer-navbar .nav-actions .nav-language-switch { gap: 4px !important; font-size: .68rem !important; }
+  #navbar.zayer-navbar .nav-actions .nav-language-switch button { min-width: 20px; font-size: .68rem !important; }
+  #navbar.zayer-navbar .nav-actions a.nav-cta,
+  #navbar.zayer-navbar .nav-actions a.nav-login {
+    padding-right: 2px !important;
+    padding-left: 2px !important;
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  #navbar.zayer-navbar { height: 80px !important; min-height: 80px !important; gap: 14px !important; }
+  #navbar.zayer-navbar .nav-mobile-controls {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    gap: 14px !important;
+    margin-left: auto !important;
+  }
+  #navbar.zayer-navbar .hamburger { display: inline-flex !important; }
+  #navbar.zayer-navbar .nav-content {
+    position: absolute !important;
+    top: 80px !important;
+    right: 0 !important;
+    left: 0 !important;
+    display: none !important;
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    max-height: calc(100dvh - 80px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 14px clamp(18px, 5vw, 36px) 24px !important;
+    border-bottom: 1px solid #e8edf4 !important;
+    background: rgba(255,255,255,.99) !important;
+    box-shadow: 0 14px 26px rgba(10,22,40,.12) !important;
+  }
+  #navbar.zayer-navbar .nav-content.open { display: flex !important; }
+  #navbar.zayer-navbar .nav-links {
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #navbar.zayer-navbar .nav-links > li { display: flex !important; width: 100% !important; }
+  #navbar.zayer-navbar .nav-links a.nav-link {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    align-items: center !important;
+    padding: 13px 0 !important;
+    font-size: .88rem !important;
+    font-weight: 500 !important;
+    letter-spacing: .5px !important;
+  }
+  #navbar.zayer-navbar .nav-links a.nav-link::before { display: none !important; }
+  #navbar.zayer-navbar .nav-links a.nav-link::after {
+    right: auto !important;
+    bottom: 5px !important;
+    left: 0 !important;
+    width: 54px !important;
+    transform-origin: left !important;
+  }
+  #navbar.zayer-navbar .nav-actions {
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 12px 0 0 !important;
+  }
+  #navbar.zayer-navbar .nav-actions .nav-language-item { display: none !important; }
+  #navbar.zayer-navbar .nav-actions a.nav-cta,
+  #navbar.zayer-navbar .nav-actions a.nav-login {
+    display: inline-flex !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+  }
+}
+
+/* Keep page content at a shared maximum width while preserving full-bleed sections. */
+:root {
+  --zayer-content-width: 1240px;
+  --zayer-content-gutter: clamp(20px, 4vw, 48px);
+}
+.container, .wrap, .section-inner, .trust-inner, .hero-layout, .hero-grid,
+.contact-main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--zayer-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--zayer-content-gutter) !important;
+  padding-right: var(--zayer-content-gutter) !important;
+}
+.hero-content, .page-hero-content, .section-heading, .contact-wrap,
+.contact-form-wrap, .portfolio-document .section-heading {
+  box-sizing: border-box;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.services-grid, .values-grid, .team-grid, .perks-grid, .model-grid, .course-grid,
+.web-grid, .media-grid, .process-steps, .feature-grid, .features-grid,
+.why-us, .culture-grid, .jobs-list {
+  max-width: var(--zayer-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.zayer-footer .footer-top, .zayer-footer .footer-bottom {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--zayer-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+#app > main > .top, #app > main > .stats, #app > main > .bar,
+#app > main > .wrap, #app > main > .upload-panel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--zayer-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Keep hero copy anchored to the left while allowing hero backgrounds to stay full-bleed. */
+.hero, .page-hero {
+  text-align: left !important;
+}
+.page-hero {
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+.hero-content, .page-hero-content, .hero-inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: min(720px, 92vw) !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+.hero-eyebrow, .hero h1, .page-hero h1, .hero-sub, .hero-copy,
+.page-hero-sub, .hero .eyebrow, .page-hero .breadcrumb, .hero .breadcrumb {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.hero-actions, .hero-btns {
+  display: flex !important;
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.page-hero > .breadcrumb, .page-hero > h1, .page-hero > .page-hero-sub,
+.page-hero > .section-eyebrow {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: min(720px, 92vw) !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+.page-hero > .stats-row {
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.quote-page .quote-head {
+  width: min(720px, 100%);
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+  align-items: flex-start !important;
+}
+
+/* The active and hovered navbar link uses only the gold text, dot, and underline. */
+#navbar.zayer-navbar .nav-links a.nav-link,
+#navbar.zayer-navbar .nav-links a.nav-link:hover,
+#navbar.zayer-navbar .nav-links a.nav-link.active,
+#navbar.zayer-navbar .nav-links a.nav-link:focus,
+#navbar.zayer-navbar .nav-links a.nav-link:focus-visible {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+#navbar.zayer-navbar .nav-links a.nav-link:focus-visible { color: #a57a2f !important; }
+
+/* Keep full-bleed sections edge-to-edge while aligning their inner content. */
+section:not(#zaya-window), .hero, .page-hero, .why-us, .process, .services, .cta-banner,
+.cv-upload-section, footer {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+@media (min-width: 1025px) {
+  section:not(#zaya-window), .hero, .page-hero, .why-us, .process, .services, .cta-banner,
+  .cv-upload-section, footer {
+    padding-left: max(60px, calc((100% - 1280px) / 2)) !important;
+    padding-right: max(60px, calc((100% - 1280px) / 2)) !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  section:not(#zaya-window), .hero, .page-hero, .why-us, .process, .services, .cta-banner,
+  .cv-upload-section, footer {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  section:not(#zaya-window), .hero, .page-hero, .why-us, .process, .services, .cta-banner,
+  .cv-upload-section, footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+#navbar.zayer-navbar .nav-links a.nav-link:focus-visible::before { opacity: 1; transform: translateX(-50%) scale(1); }
+#navbar.zayer-navbar .nav-links a.nav-link:focus-visible::after { transform: scaleX(1); }

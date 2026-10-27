@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="See You — boutique de chaussures et accessoires. Explorez notre sélection mode dans une expérience élégante et moderne.">
+  <title>See You — Élégance au quotidien</title>
+  <link rel="icon" href="assets/see-you-logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body data-theme="luxury">
+  <div class="demo-ribbon" id="demoRibbon">
+    <span class="demo-dot"></span><span data-i18n="demoNotice">Démonstration interactive — produits, prix et comptes à valider avant mise en ligne</span>
+    <button class="ribbon-close" aria-label="Close notice" id="closeDemoRibbon">×</button>
+  </div>
+  <div class="announcement"><span class="announcement-star">✦</span><span data-i18n="announcement">SEE YOU · Style, élégance, confiance</span><span class="announcement-star">✦</span></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="See You home">
+        <img src="assets/see-you-logo.png" alt="Logo officiel See You" class="brand-logo">
+      </a>
+      <button class="mobile-menu-toggle icon-button" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="#home" class="nav-link active" data-i18n="navHome">Accueil</a>
+        <a href="#catalog" class="nav-link" data-category="shoes" data-i18n="navShoes">Chaussures</a>
+        <a href="#catalog" class="nav-link" data-category="bags" data-i18n="navAccessories">Sacs & Accessoires</a>
+        <a href="#catalog" class="nav-link" data-category="clothing" data-i18n="navClothing">Vêtements</a>
+        <a href="#catalog" class="nav-link" data-category="new" data-i18n="navNew">Nouveautés</a>
+        <a href="#promos" class="nav-link" data-i18n="navPromos">Sélection</a>
+        <a href="#about" class="nav-link" data-i18n="navAbout">À propos</a>
+      </nav>
+      <div class="header-tools">
+        <form class="search-box" id="searchForm" role="search">
+          <input id="searchInput" type="search" aria-label="Search products" data-i18n-placeholder="searchPlaceholder" placeholder="Rechercher un produit...">
+          <button aria-label="Search" type="submit" class="search-submit"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language switcher">
+          <button type="button" data-lang="fr" class="lang-button active">FR</button><span>/</span>
+          <button type="button" data-lang="ar" class="lang-button">AR</button><span>/</span>
+          <button type="button" data-lang="en" class="lang-button">EN</button>
+        </div>
+        <button class="icon-button account-button" id="accountButton" aria-label="Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg><span class="tool-label" data-i18n="account">Compte</span></button>
+        <button class="icon-button cart-button" id="cartButton" aria-label="Shopping cart"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.1 11.2a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 1.9-1.5L22 8H6"></path><circle cx="10" cy="21" r="1"></circle><circle cx="18" cy="21" r="1"></circle></svg><span class="tool-label" data-i18n="cart">Panier</span><span class="cart-count" id="cartCount">0</span></button>
+        <button class="icon-button theme-shortcut" id="themeButton" aria-label="Change design"><svg viewBox="0 0 24 24"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"></path><circle cx="12" cy="12" r="5"></circle></svg><span class="tool-label" data-i18n="design">Design</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-label="See You collection">
+      <img class="hero-image" src="assets/see-you-banner.png" alt="Visuel de marque See You noir et or">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="heroEyebrow">LA SIGNATURE SEE YOU</span></span>
+        <h1 data-i18n="heroTitle">L’élégance<br>au quotidien.</h1>
+        <p data-i18n="heroText">Des pièces choisies avec soin pour révéler votre style, à chaque instant.</p>
+        <a href="#catalog" class="button button-gold" id="heroCta"><span data-i18n="heroCta">Découvrir la collection</span><span class="button-arrow">↗</span></a>
+        <div class="hero-note"><span class="note-line"></span><span data-i18n="heroNote">CHAUSSURES · SACS · ACCESSOIRES</span></div>
+      </div>
+      <div class="hero-pagination"><span class="pagination-dot selected"></span><span class="pagination-dot"></span><span class="pagination-dot"></span></div>
+      <span class="hero-corner hero-corner-left">S</span><span class="hero-corner hero-corner-right">Y</span>
+    </section>
+
+    <section class="benefit-strip" aria-label="Store benefits">
+      <div class="benefit"><span class="benefit-icon">✧</span><div><strong data-i18n="benefitOneTitle">Sélection soignée</strong><small data-i18n="benefitOneText">Style & détails</small></div></div>
+      <div class="benefit"><span class="benefit-icon">◇</span><div><strong data-i18n="benefitTwoTitle">Commande simple</strong><small data-i18n="benefitTwoText">Un parcours fluide</small></div></div>
+      <div class="benefit"><span class="benefit-icon">↺</span><div><strong data-i18n="benefitThreeTitle">Service client</strong><small data-i18n="benefitThreeText">À votre écoute</small></div></div>
+      <div class="benefit"><span class="benefit-icon">✦</span><div><strong data-i18n="benefitFourTitle">L’expérience See You</strong><small data-i18n="benefitFourText">Élégance & confiance</small></div></div>
+    </section>
+
+    <section class="section categories-section" id="categories">
+      <div class="section-heading"><div><span class="section-kicker" data-i18n="discoverKicker">EXPLOREZ L’UNIVERS</span><h2 data-i18n="categoriesTitle">Un style pour chaque moment</h2></div><p data-i18n="categoriesSubtitle">Des essentiels qui font la différence.</p></div>
+      <div class="category-grid">
+        <button class="category-card category-shoes" data-category="shoes"><img src="assets/sandals-cream.jpg" alt="Chaussures élégantes"><span class="category-number">01</span><span class="category-copy"><strong data-i18n="catShoes">Chaussures</strong><small data-i18n="explore">Explorer la sélection</small></span><span class="category-arrow">↗</span></button>
+        <button class="category-card category-bags" data-category="bags"><img src="assets/bag-black.jpg" alt="Sac noir"><span class="category-number">02</span><span class="category-copy"><strong data-i18n="catBags">Sacs & accessoires</strong><small data-i18n="explore">Explorer la sélection</small></span><span class="category-arrow">↗</span></button>
+        <button class="category-card category-clothing" data-category="clothing"><img src="assets/blazer-beige.jpg" alt="Veste beige"><span class="category-number">03</span><span class="category-copy"><strong data-i18n="catClothing">Vêtements</strong><small data-i18n="explore">Explorer la sélection</small></span><span class="category-arrow">↗</span></button>
+      </div>
+    </section>
+
+    <section class="section catalog-section" id="catalog">
+      <div class="section-heading catalog-heading"><div><span class="section-kicker" data-i18n="collectionKicker">LA SÉLECTION</span><h2 id="catalogTitle" data-i18n="productsTitle">Nos pièces du moment</h2></div><div class="catalog-controls"><span class="results-count" id="resultsCount">8 pièces</span><label class="sort-label"><span data-i18n="sortBy">Trier par</span><select id="sortSelect" aria-label="Sort products"><option value="featured" data-i18n="sortFeatured">À la une</option><option value="priceAsc" data-i18n="sortPriceAsc">Prix croissant</option><option value="priceDesc" data-i18n="sortPriceDesc">Prix décroissant</option><option value="name" data-i18n="sortName">Nom</option></select></label></div></div>
+      <div class="filter-row" id="filterRow"><button class="filter-chip active" data-category="all" data-i18n="filterAll">Tout voir</button><button class="filter-chip" data-category="shoes" data-i18n="catShoes">Chaussures</button><button class="filter-chip" data-category="bags" data-i18n="catBags">Sacs & accessoires</button><button class="filter-chip" data-category="clothing" data-i18n="catClothing">Vêtements</button><button class="filter-chip" data-category="new" data-i18n="navNew">Nouveautés</button></div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-results hidden" id="emptyResults"><span class="empty-icon">⌕</span><h3 data-i18n="noProducts">Aucun produit trouvé</h3><p data-i18n="noProductsText">Essayez une autre recherche ou catégorie.</p><button class="button button-outline" id="resetFilters" data-i18n="resetFilters">Réinitialiser les filtres</button></div>
+      <div class="catalog-bottom"><span data-i18n="catalogBottom">Une sélection de démonstration, à personnaliser avec le catalogue officiel.</span><button class="text-link" data-action="reset-filters"><span data-i18n="viewAll">Voir toute la sélection</span> <span>↗</span></button></div>
+    </section>
+
+    <section class="promo-section" id="promos">
+      <div class="promo-card promo-dark"><div class="promo-copy"><span class="promo-overline" data-i18n="promoOneKicker">LA TOUCHE FINALE</span><h3 data-i18n="promoOneTitle">Les détails<br>font le style.</h3><p data-i18n="promoOneText">Des accessoires qui signent votre allure.</p><a href="#catalog" class="button button-light" data-i18n="discoverNow">Découvrir maintenant ↗</a></div><img src="assets/bag-black.jpg" alt="Sac noir élégant"></div>
+      <div class="promo-card promo-light"><div class="promo-copy"><span class="promo-overline" data-i18n="promoTwoKicker">VOTRE PROCHAINE PIÈCE</span><h3 data-i18n="promoTwoTitle">Trouvez votre<br>coup de cœur.</h3><p data-i18n="promoTwoText">Explorez la sélection et choisissez votre style.</p><a href="#catalog" class="button button-dark" data-i18n="viewSelection">Voir la sélection ↗</a></div><img src="assets/heels-nude.jpg" alt="Escarpins beige"></div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-image-wrap"><img src="assets/see-you-banner.png" alt="Univers visuel See You" class="about-image"><div class="about-stamp"><img src="assets/see-you-logo.png" alt="See You logo"><span data-i18n="aboutStamp">STYLE<br>WITH PURPOSE</span></div></div>
+      <div class="about-copy"><span class="section-kicker" data-i18n="aboutKicker">L’ESPRIT SEE YOU</span><h2 data-i18n="aboutTitle">L’élégance se cache dans les détails.</h2><p data-i18n="aboutText">See You célèbre le style personnel à travers une sélection de chaussures et d’accessoires. Découvrez une expérience pensée pour vous inspirer, simplement et avec élégance.</p><a href="#footer" class="text-link"><span data-i18n="aboutCta">En savoir plus</span><span>↗</span></a><div class="about-signature">See You <span>—</span></div></div>
+    </section>
+
+    <section class="service-grid section">
+      <div class="service-item"><span class="service-icon">♡</span><div><strong data-i18n="serviceOneTitle">Une sélection inspirante</strong><p data-i18n="serviceOneText">Des pièces choisies avec attention.</p></div></div>
+      <div class="service-item"><span class="service-icon">▱</span><div><strong data-i18n="serviceTwoTitle">Commande accompagnée</strong><p data-i18n="serviceTwoText">Des informations claires à chaque étape.</p></div></div>
+      <div class="service-item"><span class="service-icon">↻</span><div><strong data-i18n="serviceThreeTitle">À votre écoute</strong><p data-i18n="serviceThreeText">Contactez-nous pour vos questions.</p></div></div>
+      <div class="service-item"><span class="service-icon">✧</span><div><strong data-i18n="serviceFourTitle">L’expérience See You</strong><p data-i18n="serviceFourText">Une boutique qui vous ressemble.</p></div></div>
+    </section>
+
+    <section class="newsletter-section">
+      <div class="newsletter-mark">✉</div><div class="newsletter-copy"><span class="section-kicker" data-i18n="newsletterKicker">LA NOTE SEE YOU</span><h2 data-i18n="newsletterTitle">Une touche d’inspiration dans votre boîte mail.</h2><p data-i18n="newsletterText">Inscrivez-vous pour suivre les nouveautés. Démonstration uniquement.</p></div>
+      <form id="newsletterForm" class="newsletter-form"><label class="sr-only" for="newsletterEmail" data-i18n="emailLabel">Adresse e-mail</label><input type="email" id="newsletterEmail" required placeholder="Votre adresse e-mail" data-i18n-placeholder="newsletterPlaceholder"><button type="submit" class="button button-gold"><span data-i18n="subscribe">S’inscrire</span><span>↗</span></button></form>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-main">
+      <div class="footer-brand-column"><img src="assets/see-you-logo.png" alt="See You" class="footer-logo"><p data-i18n="footerBrand">See You — le style, jusque dans les détails.</p><a href="https://www.facebook.com/SEEYOU.TNN" target="_blank" rel="noopener noreferrer" class="footer-social">f <span data-i18n="followFacebook">Suivez-nous sur Facebook</span> ↗</a></div>
+      <div class="footer-col"><h4 data-i18n="footerExplore">Explorer</h4><a href="#home" data-i18n="navHome">Accueil</a><a href="#catalog" data-category="shoes" data-i18n="navShoes">Chaussures</a><a href="#catalog" data-category="bags" data-i18n="navAccessories">Sacs & Accessoires</a><a href="#catalog" data-category="clothing" data-i18n="navClothing">Vêtements</a></div>
+      <div class="footer-col"><h4 data-i18n="footerHelp">Service & aide</h4><a href="#about" data-i18n="navAbout">À propos</a><button type="button" data-action="contact" data-i18n="contactUs">Nous contacter</button><button type="button" data-action="shipping" data-i18n="shippingInfo">Livraison & retours</button></div>
+      <div class="footer-col footer-contact"><h4 data-i18n="footerContact">La boutique</h4><p data-i18n="contactDemo">Coordonnées à confirmer avec la boutique.</p><p>Facebook: <a href="https://www.facebook.com/SEEYOU.TNN" target="_blank" rel="noopener noreferrer">SEEYOU.TNN ↗</a></p><button class="footer-theme-link" id="footerThemeButton" data-i18n="changeDesign">Changer le design</button></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="currentYear"></span> See You. <span data-i18n="rights">Tous droits réservés.</span></span><span class="footer-demo" data-i18n="demoFooter">Version de démonstration — à valider avant publication</span><div class="footer-langs"><button data-lang="fr">FR</button><button data-lang="ar">AR</button><button data-lang="en">EN</button><a href="#home" aria-label="Back to top">↑</a></div></div>
+  </footer>
+
+  <div id="modalRoot"></div>
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

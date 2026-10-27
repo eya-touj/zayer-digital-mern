@@ -1,0 +1,203 @@
+/* ZAYER.Digital — animated styling for PAGE NAME links only.
+   No navbar background, logo, or GET IN TOUCH CTA properties are set here. */
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta),
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 0;
+  color: #142238 !important;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: clamp(13px, .96vw, 19px) !important;
+  font-weight: 800 !important;
+  letter-spacing: clamp(.4px, .075vw, 1.25px) !important;
+  line-height: 1.25;
+  transition: color .32s ease, transform .32s ease, text-shadow .32s ease !important;
+}
+
+/* Small gold dot appears only above the current page name. */
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::before,
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  background: #f4ca78;
+  box-shadow: 0 0 14px rgba(244,202,120,.72);
+  transition: transform .3s ease;
+}
+
+/* Animated gold underline. */
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::after,
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 0;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#d9a94e,#ffe4a5,#f4ca78);
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(244,202,120,.42);
+  transition: width .38s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
+}
+
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):hover,
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta):hover {
+  color: #936b23 !important;
+  transform: translateY(-3px);
+  text-shadow: 0 0 12px rgba(244,202,120,.2);
+}
+
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):hover::after,
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active::after,
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta):hover::after,
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active::after {
+  width: 100%;
+}
+
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active,
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active {
+  color: #a57a2f !important;
+  text-shadow: 0 0 14px rgba(244,202,120,.22);
+}
+
+#navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active::before,
+nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active::before {
+  transform: translateX(-50%) scale(1);
+}
+
+/* Mobile menu behavior only; the main navbar background is not changed. */
+@media (max-width: 1100px) {
+  #navbar.zayer-navbar .hamburger,
+  #navbar.zayer-navbar .menu-toggle,
+  nav.zayer-navbar .hamburger,
+  nav.zayer-navbar .menu-toggle { display: flex !important; }
+
+  #navbar.zayer-navbar .nav-links,
+  nav.zayer-navbar .nav-links {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    width: 100%;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    padding: 14px 28px 24px !important;
+    margin: 0 !important;
+    background: rgba(255,255,255,.98) !important;
+    border-bottom: 1px solid var(--light-grey, #e8edf4) !important;
+    box-shadow: 0 12px 25px rgba(10,22,40,.08) !important;
+  }
+
+  #navbar.zayer-navbar .nav-links.open,
+  nav.zayer-navbar .nav-links.open { display: flex !important; }
+
+  #navbar.zayer-navbar .nav-links li,
+  nav.zayer-navbar .nav-links li { width: 100%; }
+
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta),
+  nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta) {
+    display: flex !important;
+    width: 100%;
+    padding: 15px 0 !important;
+    font-size: 15px !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+/* Keep the animation subtle on narrow screens. */
+@media (max-width: 900px) {
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::before,
+  nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::before { display: none; }
+
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::after,
+  nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta)::after {
+    left: 0;
+    bottom: 6px;
+    transform: none;
+    height: 2px;
+  }
+
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta):hover,
+  nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta):hover { transform: translateX(5px); }
+
+  #navbar.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active::after,
+  nav.zayer-navbar .nav-links a.nav-link:not(.nav-cta).active::after { width: 55px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #navbar.zayer-navbar .nav-links a.nav-link,
+  nav.zayer-navbar .nav-links a.nav-link { transition: none !important; animation: none !important; }
+}
+
+
+/* ===== Layout: logo | page links (left) | space | GET IN TOUCH + LOGIN (right) ===== */
+@media (min-width: 1101px) {
+  nav.zayer-navbar { justify-content: flex-start !important; }
+  nav.zayer-navbar .nav-links {
+    flex: 1;
+    margin-left: clamp(32px, 4vw, 72px) !important;
+    gap: clamp(18px, 1.7vw, 32px) !important;
+  }
+  nav.zayer-navbar .nav-links li.nav-cta-item { margin-left: auto; }
+}
+
+/* ===== Buttons (shared look) ===== */
+nav.zayer-navbar .nav-links a.nav-cta,
+nav.zayer-navbar .nav-links a.nav-login {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px !important;
+  border-radius: 6px !important;
+  font-family: 'DM Sans', Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none !important;
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease !important;
+}
+
+/* GET IN TOUCH: solid navy, lifts on hover */
+nav.zayer-navbar .nav-links a.nav-cta { box-shadow: 0 4px 14px rgba(10, 22, 40, .18); }
+nav.zayer-navbar .nav-links a.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(200, 169, 110, .35);
+}
+
+/* LOGIN: outlined, fills with gold on hover */
+nav.zayer-navbar .nav-links a.nav-login {
+  color: #0a1628 !important;
+  background: transparent;
+  border: 1.5px solid #0a1628;
+}
+nav.zayer-navbar .nav-links a.nav-login:hover {
+  background: #c8a96e;
+  border-color: #c8a96e;
+  transform: translateY(-2px);
+}
+
+/* Mobile menu: buttons full width, stacked */
+@media (max-width: 1100px) {
+  nav.zayer-navbar .nav-links li.nav-cta-item,
+  nav.zayer-navbar .nav-links li.nav-login-item { margin-top: 10px; }
+  nav.zayer-navbar .nav-links a.nav-cta,
+  nav.zayer-navbar .nav-links a.nav-login { width: 100%; }
+}
